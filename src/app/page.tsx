@@ -1,10 +1,9 @@
-'use client'
-import styles from './_styles/page.module.css';
-import { useTheme } from '@mui/material/styles';
+import { getProducts } from './_actions/getProducts'
+import Products from './_components/Products'
+import { mappingProducts } from '@/app/_libs/mappingProducts'
 
-const Home = () => {
-  const theme = useTheme();
-  return <div className={styles.main} style={{ backgroundColor: theme.palette.secondary.main }}>products</div>
+export default async function ProductsPage() {
+  const data = await getProducts()
+  const products = mappingProducts(data.products)
+  return <Products products={products} />
 }
-
-export default Home
