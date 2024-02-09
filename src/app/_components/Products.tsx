@@ -13,6 +13,7 @@ import {
   IconButton,
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
+import { useRouter } from 'next/navigation'
 
 interface ProductsProps {
   products: Product[] | null
@@ -20,6 +21,7 @@ interface ProductsProps {
 
 const Products: FC<ProductsProps> = ({ products }) => {
   const theme = useTheme()
+  const router = useRouter()
 
   if (!products?.length) {
     return (
@@ -50,11 +52,15 @@ const Products: FC<ProductsProps> = ({ products }) => {
           <Grid key={product.id} item xs={12} sm={6} md={4}>
             <Card
               sx={{
+                cursor: 'pointer',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 backgroundColor: theme.palette.primary.light,
                 color: theme.palette.secondary.main,
+              }}
+              onClick={() => {
+                router.push(`/product/${product.id}`)
               }}
             >
               <CardMedia
@@ -85,7 +91,7 @@ const Products: FC<ProductsProps> = ({ products }) => {
                     color: theme.palette.primary.main,
                   }}
                 >
-                  Price: ${product.price.toFixed(2)}
+                  <b>{labels.PRICE}</b>: ${product.price.toFixed(2)}
                 </Typography>
                 <IconButton
                   aria-label="add to cart"
@@ -93,6 +99,10 @@ const Products: FC<ProductsProps> = ({ products }) => {
                     borderRadius: '50%',
                     color: theme.palette.text.secondary,
                     backgroundColor: theme.palette.secondary.main,
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    console.log(product.brand)
                   }}
                 >
                   <AddIcon />

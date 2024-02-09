@@ -1,8 +1,9 @@
 'use client'
 import styles from '../_styles/page.module.css'
+import Cart from '@/app/_components/Cart'
 
-const Cart = () => {
-    return <div className={styles.cart}>cart</div>
+const CartPage = () => {
+  return <Cart />
 }
 
-export default Cart
+export default CartPage
