@@ -31,7 +31,8 @@ const CartProduct: FC<CartProductProps> = ({ product }) => {
           alt={product.title}
         />
         <span className={styles.cartProductInfos}>
-          <b>{product.title}</b>
+          <b>{product.brand}</b>
+          <span>{product.title}</span>
           <span>${product.price}</span>
         </span>
       </div>
