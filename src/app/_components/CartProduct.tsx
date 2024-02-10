@@ -2,8 +2,13 @@ import React, { FC } from 'react'
 import { useTheme } from '@mui/material/styles'
 import { labels } from '@/app/labels'
 import styles from '../_styles/page.module.css'
-import { CartProduct } from '@/app/interfaces'
+import { CartProduct, Product } from '@/app/interfaces'
 import { Button } from '@mui/material'
+import { useAppDispatch } from '@/app/_store/rootReducer'
+import {
+  addToCart,
+  removeFromCart,
+} from '@/app/_store/slices/productsGallerySlice'
 
 interface CartProductProps {
   product: CartProduct
@@ -11,6 +16,11 @@ interface CartProductProps {
 
 const CartProduct: FC<CartProductProps> = ({ product }) => {
   const theme = useTheme()
+
+  const dispatch = useAppDispatch()
+  const handleRemoveFromCart = (product: CartProduct) => {
+    dispatch(removeFromCart(product))
+  }
 
   return (
     <div className={styles.cartProduct}>
@@ -21,8 +31,8 @@ const CartProduct: FC<CartProductProps> = ({ product }) => {
           alt={product.title}
         />
         <span className={styles.cartProductInfos}>
-          <b>{product.brand}</b>
-          <span>{product.title}</span>
+          <b>{product.title}</b>
+          <span>${product.price}</span>
         </span>
       </div>
       <div className={styles.cartProductButtonContainer}>
@@ -34,7 +44,7 @@ const CartProduct: FC<CartProductProps> = ({ product }) => {
             backgroundColor: theme.palette.secondary.main,
             marginTop: '20px',
           }}
-          onClick={() => console.log('rimuovi')}
+          onClick={() => handleRemoveFromCart(product)}
         >
           {labels.DELETE}
         </Button>

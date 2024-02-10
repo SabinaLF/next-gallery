@@ -91,8 +91,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
               color: theme.palette.text.primary,
               backgroundColor: theme.palette.secondary.main,
             }}
-            onClick={(e) => {
-              e.stopPropagation()
+            onClick={() => {
               handleAddToCart(product)
             }}
           >

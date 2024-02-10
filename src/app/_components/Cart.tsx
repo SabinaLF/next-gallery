@@ -13,7 +13,7 @@ interface CartProps {}
 const Cart: FC<CartProps> = () => {
   const theme = useTheme()
   const { cart } = useAppSelector((state) => state.productsGallery)
-
+  console.log(cart)
   const total = useMemo(() => {
     return cart.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.price

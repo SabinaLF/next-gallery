@@ -44,9 +44,32 @@ const productsGallerySlice = createSlice({
         state.cart.push({ ...newProduct, quantity: 1 })
       }
     },
+    removeFromCart: (state, action: PayloadAction<CartProduct>) => {
+      const updatedCart = [...state.cart]
+      const existingProductIndex = state.cart.findIndex(
+        (product) => product.id === action.payload.id
+      )
+
+      if (existingProductIndex !== -1) {
+        const updatedProduct = { ...updatedCart[existingProductIndex] }
+
+        if (updatedProduct.quantity === 1) {
+          // If product quantity is 1, remove it
+          updatedCart.splice(existingProductIndex, 1)
+        } else {
+          // If product quantity is more than 1, update its quantity
+          updatedProduct.quantity--
+          updatedCart[existingProductIndex] = updatedProduct
+        }
+
+        state.cart = updatedCart
+        state.cartCount--
+      }
+    },
   },
 })
 
-export const { setError, addToCart } = productsGallerySlice.actions
+export const { setError, addToCart, removeFromCart } =
+  productsGallerySlice.actions
 
 export default productsGallerySlice.reducer
