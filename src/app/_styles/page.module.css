@@ -5,3 +5,80 @@
   align-items: center;
   min-height: 100vh;
 }
+
+.cartProducts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-inline: 50px;
+  width: 100%;
+  max-width: 250px;
+}
+
+.cartProduct {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  background-color: #7c7566;
+  color: #d9d6d1;
+}
+
+.cartProductImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.cartProductInfosContainer {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+}
+
+.cartProductButtonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  margin: 10px;
+}
+
+.cartProductQuantity {
+  text-align: center;
+  width: 100%;
+}
+
+.cartProductButton {
+  width: 100px;
+  height: 30px;
+}
+
+.cartProductInfos {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  line-height: 20px;
+}
+
+.total {
+  padding-block: 20px;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .cartProduct {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cartProductButton {
+    margin-left: 10px;
+  }
+  .cartProducts {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+

@@ -37,7 +37,7 @@ const Products: FC<ProductsProps> = ({ products }) => {
         className={styles.main}
         style={{
           backgroundColor: theme.palette.secondary.main,
-          color: theme.palette.primary.light,
+          color: theme.palette.text.primary,
         }}
       >
         <Typography variant="h5" component="div">
@@ -48,13 +48,7 @@ const Products: FC<ProductsProps> = ({ products }) => {
   }
 
   return (
-    <div
-      className={styles.main}
-      style={{
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.primary.light,
-      }}
-    >
+    <div className={styles.main}>
       <Grid container spacing={2} sx={{ padding: '100px', maxWidth: '1500px' }}>
         {products.map((product) => (
           <Grid key={product.id} item xs={12} sm={6} md={4}>
@@ -64,8 +58,8 @@ const Products: FC<ProductsProps> = ({ products }) => {
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
-                backgroundColor: theme.palette.primary.light,
-                color: theme.palette.secondary.main,
+                color: theme.palette.text.primary,
+                backgroundColor: theme.palette.primary.main,
               }}
               onClick={() => {
                 router.push(`/product/${product.id}`)
@@ -96,7 +90,7 @@ const Products: FC<ProductsProps> = ({ products }) => {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: theme.palette.primary.main,
+                    color: theme.palette.text.primary,
                   }}
                 >
                   <b>{labels.PRICE}</b>: ${product.price.toFixed(2)}
@@ -105,7 +99,7 @@ const Products: FC<ProductsProps> = ({ products }) => {
                   aria-label="add to cart"
                   sx={{
                     borderRadius: '50%',
-                    color: theme.palette.text.secondary,
+                    color: theme.palette.text.primary,
                     backgroundColor: theme.palette.secondary.main,
                   }}
                   onClick={(e) => {

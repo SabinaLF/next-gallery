@@ -17,8 +17,8 @@ const Header = () => {
     <AppBar
       position="fixed"
       style={{
-        backgroundColor: theme.palette.primary.light,
-        color: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.text.primary,
       }}
     >
       <Toolbar>

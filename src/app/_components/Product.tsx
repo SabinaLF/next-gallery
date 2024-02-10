@@ -30,20 +30,14 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   }
 
   return (
-    <div
-      className={styles.main}
-      style={{
-        backgroundColor: theme.palette.secondary.main,
-        color: theme.palette.primary.light,
-      }}
-    >
+    <div className={styles.main}>
       <Card
         sx={{
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: theme.palette.primary.light,
-          color: theme.palette.secondary.main,
+          color: theme.palette.text.primary,
+          backgroundColor: theme.palette.primary.main,
         }}
       >
         <ImageList
@@ -85,7 +79,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Typography
             variant="body1"
             sx={{
-              color: theme.palette.primary.main,
+              color: theme.palette.text.primary,
             }}
           >
             <b>{labels.PRICE}</b>: ${product.price.toFixed(2)}
@@ -94,7 +88,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
             aria-label="add to cart"
             sx={{
               borderRadius: '50%',
-              color: theme.palette.text.secondary,
+              color: theme.palette.text.primary,
               backgroundColor: theme.palette.secondary.main,
             }}
             onClick={(e) => {
