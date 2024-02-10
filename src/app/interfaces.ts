@@ -11,6 +11,14 @@ export interface Product {
   thumbnail: string
   images: string[]
 }
+export interface CartProduct {
+  id: number
+  title: string
+  price: number
+  brand: string
+  thumbnail: string
+  quantity: number
+}
 export interface DummyProduct {
   id: number
   title: string

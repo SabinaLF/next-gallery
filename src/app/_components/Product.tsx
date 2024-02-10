@@ -8,13 +8,14 @@ import {
   CardContent,
   Typography,
   IconButton,
-  Grid,
   ImageListItem,
   ImageList,
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
-import { useRouter } from 'next/navigation'
 import styles from '@/app/_styles/page.module.css'
+import { addToCart } from '@/app/_store/slices/productsGallerySlice'
+import { useAppDispatch } from '@/app/_store/rootReducer'
+import { mappingCartProduct } from '@/app/_libs/mappingCartProduct'
 
 interface ProductCardProps {
   product: Product
@@ -22,10 +23,10 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const theme = useTheme()
-  const router = useRouter()
 
-  const handleCardClick = () => {
-    router.push(`/product/${product.id}`)
+  const dispatch = useAppDispatch()
+  const handleAddToCart = (product: Product) => {
+    dispatch(addToCart(product))
   }
 
   return (
@@ -44,7 +45,6 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           backgroundColor: theme.palette.primary.light,
           color: theme.palette.secondary.main,
         }}
-        onClick={handleCardClick}
       >
         <ImageList
           sx={{
@@ -99,7 +99,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
             }}
             onClick={(e) => {
               e.stopPropagation()
-              console.log(product.brand)
+              handleAddToCart(product)
             }}
           >
             <AddIcon />

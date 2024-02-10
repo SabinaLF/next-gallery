@@ -6,10 +6,12 @@ import HomeIcon from '@mui/icons-material/Home'
 import { useTheme } from '@mui/material/styles'
 import { labels } from '../labels'
 import { useRouter } from 'next/navigation'
+import { useAppSelector } from '@/app/_store/rootReducer'
 
 const Header = () => {
   const theme = useTheme()
   const router = useRouter()
+  const { cartCount } = useAppSelector((state) => state.productsGallery)
 
   return (
     <AppBar
@@ -42,6 +44,9 @@ const Header = () => {
           }}
         >
           <ShoppingCartIcon />
+          <Typography variant="body1" component="span" style={{ flexGrow: 1 }}>
+            {cartCount}
+          </Typography>
         </IconButton>
       </Toolbar>
     </AppBar>

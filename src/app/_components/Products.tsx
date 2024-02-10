@@ -14,6 +14,9 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { useRouter } from 'next/navigation'
+import { useAppDispatch } from '@/app/_store/rootReducer'
+import { addToCart } from '@/app/_store/slices/productsGallerySlice'
+import { mappingCartProduct } from '@/app/_libs/mappingCartProduct'
 
 interface ProductsProps {
   products: Product[] | null
@@ -22,6 +25,11 @@ interface ProductsProps {
 const Products: FC<ProductsProps> = ({ products }) => {
   const theme = useTheme()
   const router = useRouter()
+
+  const dispatch = useAppDispatch()
+  const handleAddToCart = (product: Product) => {
+    dispatch(addToCart(product))
+  }
 
   if (!products?.length) {
     return (
@@ -102,7 +110,7 @@ const Products: FC<ProductsProps> = ({ products }) => {
                   }}
                   onClick={(e) => {
                     e.stopPropagation()
-                    console.log(product.brand)
+                    handleAddToCart(product)
                   }}
                 >
                   <AddIcon />
