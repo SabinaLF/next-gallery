@@ -6,24 +6,17 @@ import { mappingCartProduct } from '@/app/_libs/mappingCartProduct'
 interface productsGalleryState {
   cart: CartProduct[]
   cartCount: number
-  loading: boolean
-  error: string | null
 }
 
 const initialState: productsGalleryState = {
   cart: [],
   cartCount: 0,
-  loading: false,
-  error: null,
 }
 
 const productsGallerySlice = createSlice({
   name: 'productsGallery',
   initialState,
   reducers: {
-    setError: (state, action: PayloadAction<string | null>) => {
-      state.error = action.payload
-    },
     addToCart: (state, action: PayloadAction<Product>) => {
       const newProduct = mappingCartProduct(action.payload)
       const updatedCart = [...state.cart]
@@ -69,7 +62,6 @@ const productsGallerySlice = createSlice({
   },
 })
 
-export const { setError, addToCart, removeFromCart } =
-  productsGallerySlice.actions
+export const { addToCart, removeFromCart } = productsGallerySlice.actions
 
 export default productsGallerySlice.reducer

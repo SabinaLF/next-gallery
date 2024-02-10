@@ -5,9 +5,13 @@ import { labels } from '@/app/labels'
 import { Typography, Button } from '@mui/material'
 import { useRouter } from 'next/navigation'
 
-const EmptyCart: FC = () => {
+export interface RefreshAppProps {
+  title: string
+  button: string
+  handleRefresh: () => void
+}
+const RefreshApp: FC<RefreshAppProps> = ({ title, button, handleRefresh }) => {
   const theme = useTheme()
-  const router = useRouter()
 
   return (
     <>
@@ -17,7 +21,7 @@ const EmptyCart: FC = () => {
           color: theme.palette.primary.main,
         }}
       >
-        {labels.EMPTY_CART}
+        {title}
       </Typography>
       <Button
         aria-label="go to product gallery"
@@ -26,14 +30,12 @@ const EmptyCart: FC = () => {
           color: theme.palette.text.primary,
           marginTop: '20px',
         }}
-        onClick={() => {
-          router.push('/')
-        }}
+        onClick={handleRefresh}
       >
-        {labels.CONTINUE_WITH_YOUR_SHOPPING}
+        {button}
       </Button>
     </>
   )
 }
 
-export default EmptyCart
+export default RefreshApp

@@ -44,10 +44,11 @@ const CartProduct: FC<CartProductProps> = ({ product }) => {
             color: theme.palette.primary.light,
             backgroundColor: theme.palette.secondary.main,
             marginTop: '20px',
+            width: 200,
           }}
           onClick={() => handleRemoveFromCart(product)}
         >
-          {labels.DELETE}
+          {product.quantity === 1 ? labels.DELETE : labels.REDUCE_QUANTITY}
         </Button>
       </div>
     </div>
